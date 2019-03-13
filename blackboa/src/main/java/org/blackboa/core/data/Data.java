@@ -5,6 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
@@ -180,13 +181,17 @@ public class Data {
 	private void printPrimaryKey(DataTableInfo dataTableInfo) throws Exception {
 		ResultSet primaryKeyResultSet = this.dbmd().getPrimaryKeys(this.catalog(), null,
 				dataTableInfo.getTableName().toUpperCase());
-		String str = "";
+		StringBuilder str = new StringBuilder();
+		HashSet<String> strs = new HashSet<>();
 		while (primaryKeyResultSet.next()) {
 			if(!StringUtils.isEmpty(primaryKeyResultSet.getString("COLUMN_NAME"))) {
-				str+=primaryKeyResultSet.getString("COLUMN_NAME")+",";
+				strs.add(primaryKeyResultSet.getString("COLUMN_NAME")+",");
 			}
 		}
-		dataTableInfo.setTablePrimaryKey(str);
+		for(String s : strs) {
+			str.append(s);
+		}
+		dataTableInfo.setTablePrimaryKey(str.toString());
 	}
 
 	/**
@@ -205,13 +210,17 @@ public class Data {
 	private void printForeignKey(DataTableInfo dataTableInfo) throws Exception {
 		ResultSet foreignKeyResultSet = this.dbmd().getImportedKeys(this.catalog(), null,
 				dataTableInfo.getTableName().toUpperCase());
-		String str = "";
+		StringBuilder str = new StringBuilder();
+		HashSet<String> strs = new HashSet<>();
 		while (foreignKeyResultSet.next()) {
 			if(!StringUtils.isEmpty(foreignKeyResultSet.getString("FKCOLUMN_NAME"))) {
-				str+=foreignKeyResultSet.getString("FKCOLUMN_NAME")+",";
+				strs.add(foreignKeyResultSet.getString("FKCOLUMN_NAME")+",");
 			}
 		}
-		dataTableInfo.setTableForeignKey(str);
+		for(String s : strs) {
+			str.append(s);
+		}
+		dataTableInfo.setTableForeignKey(str.toString());
 	}
 	
 	/**
@@ -228,12 +237,16 @@ public class Data {
 	 */
 	private void printIndex(DataTableInfo dataTableInfo) throws Exception {
 		ResultSet indexResultSet = this.dbmd().getIndexInfo(null,null,dataTableInfo.getTableName().toUpperCase(),false,false);
-		String str = "";
+		StringBuilder str = new StringBuilder();
+		HashSet<String> strs = new HashSet<>();
 		while (indexResultSet.next()) {
 			if(!StringUtils.isEmpty(indexResultSet.getString("COLUMN_NAME"))) {
-				str+=indexResultSet.getString("COLUMN_NAME")+",";
+				strs.add(indexResultSet.getString("COLUMN_NAME")+",");
 			}
 		}
-		dataTableInfo.setTableIndex(str);
+		for(String s : strs) {
+			str.append(s);
+		}
+		dataTableInfo.setTableIndex(str.toString());
 	}
 }

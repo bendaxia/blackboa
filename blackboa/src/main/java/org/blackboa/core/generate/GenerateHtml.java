@@ -34,7 +34,7 @@ public class GenerateHtml {
 			templateContent = templateContent.replaceAll("###tableIndex###", dataTableInfo.getTableIndex());
 			templateContent = templateContent.replaceAll("###author###", author);
 			templateContent = templateContent.replaceAll("###dateTime###", TimeUtils.getCurrentDay("yyyy-MM-dd hh:mm"));
-			StringBuffer tr = new StringBuffer();
+			StringBuilder tr = new StringBuilder();
 			for(int i = 1; i<dataTableInfo.getDataTableColumns().size();i++) {
 				tr.append("<tr>\n");
 				tr.append("<td class=\"ziduan_td\"><b>"+i+"</b></td>\n");

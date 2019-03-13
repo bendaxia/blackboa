@@ -35,17 +35,12 @@ public class Data {
 	// 获取连接
 	private static Connection getConnections(String driver, String url, String user, String pwd) throws Exception {
 		Connection conn = null;
-		try {
 			Properties props = new Properties();
 			props.put("remarksReporting", "true");
 			props.put("user", user);
 			props.put("password", pwd);
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, props);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
 		return conn;
 	}
 		

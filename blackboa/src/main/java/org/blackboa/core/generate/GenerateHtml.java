@@ -17,8 +17,7 @@ public class GenerateHtml {
 	private String tablePath;
 	
 	
-	public void MakeTableHtml(String fileName,String title,String tableImplication,String author,DataTableInfo dataTableInfo) {
-		try {
+	public void MakeTableHtml(String fileName,String title,String tableImplication,String author,DataTableInfo dataTableInfo) throws Exception {
 			String templateContent = "";
 			FileInputStream fileinputstream = new FileInputStream(HtmlModePathEnum.TABLE.toString());// 读取模板文件
 			int lenght = fileinputstream.available();
@@ -53,9 +52,5 @@ public class GenerateHtml {
 			byte tag_bytes[] = templateContent.getBytes();
 			fileoutputstream.write(tag_bytes);
 			fileoutputstream.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.print(e.toString());
-		}
 	}
 }

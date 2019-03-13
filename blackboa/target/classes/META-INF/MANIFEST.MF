@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: blackboa
-Implementation-Version: v-1.0.0
+Implementation-Version: 1.0.0
 Built-By: zhangzhifeng
 Implementation-Vendor-Id: org.blackboa
 Build-Jdk: 1.8.0_161

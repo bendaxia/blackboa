@@ -1,7 +1,7 @@
 package org.blackboa.enums;
 
 public enum HtmlModePathEnum {
-	TABLE("src/main/resources//tableModeHtml.html");
+	TABLE("/tableModeHtml.html");
 
 	private String value;
 

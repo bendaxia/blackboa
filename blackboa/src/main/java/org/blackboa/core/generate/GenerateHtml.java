@@ -1,7 +1,8 @@
 package org.blackboa.core.generate;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 
 import org.blackboa.core.bean.DataTableInfo;
 import org.blackboa.enums.HtmlModePathEnum;
@@ -19,7 +20,7 @@ public class GenerateHtml {
 	
 	public void MakeTableHtml(String fileName,String title,String tableImplication,String author,DataTableInfo dataTableInfo) throws Exception {
 			String templateContent = "";
-			FileInputStream fileinputstream = new FileInputStream(HtmlModePathEnum.TABLE.toString());// 读取模板文件
+			InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlModePathEnum.TABLE.toString());
 			int lenght = fileinputstream.available();
 			byte bytes[] = new byte[lenght];
 			fileinputstream.read(bytes);
@@ -48,9 +49,9 @@ public class GenerateHtml {
 			templateContent = templateContent.replaceAll("###tr###", tr.toString());
 			String fileame = fileName + ".html";
 			fileame = tablePath + "/" + fileame;// 生成的html文件保存路径。
-			FileOutputStream fileoutputstream = new FileOutputStream(fileame);// 建立文件输出流
-			byte tag_bytes[] = templateContent.getBytes();
-			fileoutputstream.write(tag_bytes);
-			fileoutputstream.close();
+			OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(fileame), "utf-8");
+			oStreamWriter.append(templateContent);
+			oStreamWriter.close();
+			
 	}
 }

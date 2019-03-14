@@ -22,3 +22,7 @@
 	3. tableImplication 表说明 选填
 	4. fileName 输出文件名 必填
 	5. author 作者 必填
+
+#### 日志
+##20190314 
+1. 1.0.0版本发布

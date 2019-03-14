@@ -35,9 +35,9 @@ public class GenerateHtml {
 			templateContent = templateContent.replaceAll("###author###", author);
 			templateContent = templateContent.replaceAll("###dateTime###", TimeUtils.getCurrentDay("yyyy-MM-dd hh:mm"));
 			StringBuilder tr = new StringBuilder();
-			for(int i = 1; i<dataTableInfo.getDataTableColumns().size();i++) {
+			for(int i = 0; i<dataTableInfo.getDataTableColumns().size();i++) {
 				tr.append("<tr>\n");
-				tr.append("<td class=\"ziduan_td\"><b>"+i+"</b></td>\n");
+				tr.append("<td class=\"ziduan_td\"><b>"+(i+1)+"</b></td>\n");
 				tr.append("<td class=\"ziduan_td\"><b>"+dataTableInfo.getDataTableColumns().get(i).getColumnName()+"</b></td>\n");
 				tr.append("<td class=\"ziduan_td\"><b>"+dataTableInfo.getDataTableColumns().get(i).getColumnImplication()+"</b></td>\n");
 				tr.append("<td class=\"ziduan_td\"><b>"+dataTableInfo.getDataTableColumns().get(i).getColumnType()+dataTableInfo.getDataTableColumns().get(i).getColumnLength()+"</b></td>\n");

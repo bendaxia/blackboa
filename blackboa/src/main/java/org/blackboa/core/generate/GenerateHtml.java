@@ -25,7 +25,7 @@ public class GenerateHtml {
 			byte bytes[] = new byte[lenght];
 			fileinputstream.read(bytes);
 			fileinputstream.close();
-			templateContent = new String(bytes);
+			templateContent = new String(bytes,"UTF-8");
 			templateContent = templateContent.replaceAll("###title###", title);
 			templateContent = templateContent.replaceAll("###tableExplain###", title);
 			templateContent = templateContent.replaceAll("###tableName###", dataTableInfo.getTableName());
@@ -49,7 +49,7 @@ public class GenerateHtml {
 			templateContent = templateContent.replaceAll("###tr###", tr.toString());
 			String fileame = fileName + ".html";
 			fileame = tablePath + "/" + fileame;// 生成的html文件保存路径。
-			OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(fileame), "utf-8");
+			OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(fileame), "UTF-8");
 			oStreamWriter.append(templateContent);
 			oStreamWriter.close();
 			

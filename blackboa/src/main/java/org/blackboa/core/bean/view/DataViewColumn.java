@@ -1,4 +1,4 @@
-package org.blackboa.core.bean;
+package org.blackboa.core.bean.view;
 
 public class DataViewColumn {
 

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.HashSet;
 
 import org.apache.commons.lang3.StringUtils;
-import org.blackboa.core.bean.DataTableColumn;
-import org.blackboa.core.bean.DataTableInfo;
+import org.blackboa.core.bean.table.DataTableColumn;
+import org.blackboa.core.bean.table.DataTableInfo;
 import org.blackboa.exceptions.ParamException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

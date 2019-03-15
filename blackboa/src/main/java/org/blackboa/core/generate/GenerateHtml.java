@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 
-import org.blackboa.core.bean.DataTableInfo;
+import org.blackboa.core.bean.table.DataTableInfo;
 import org.blackboa.enums.HtmlModePathEnum;
 import org.blackboa.utils.time.TimeUtils;
 import org.springframework.beans.factory.annotation.Value;

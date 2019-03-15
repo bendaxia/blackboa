@@ -1,8 +1,9 @@
 package org.blackboa.controller;
 
 import org.blackboa.common.Response;
-import org.blackboa.core.bean.DataTableInfo;
+import org.blackboa.core.bean.table.DataTableInfo;
 import org.blackboa.core.data.DataTableService;
+import org.blackboa.core.data.DataViewService;
 import org.blackboa.core.generate.GenerateHtml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,8 @@ public class DataController {
 	@Autowired
 	private DataTableService dataTableService;
 	@Autowired
+	private DataViewService dataViewService;
+	@Autowired
 	private GenerateHtml generateHtml;
 
 	@RequestMapping(value = "/table", method = RequestMethod.POST, produces = "application/json")
@@ -28,6 +31,17 @@ public class DataController {
 		try {
 			DataTableInfo dataTableInfo = dataTableService.getDataTableInfo(table);
 			generateHtml.MakeTableHtml(fileName, title,tableImplication,author, dataTableInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.errorInternal(e.getMessage());
+		}
+		return Response.ok();
+	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.POST, produces = "application/json")
+	public String searchSingleRiskEntry(){
+		try {
+			dataViewService.getDataViewInfo("1");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());

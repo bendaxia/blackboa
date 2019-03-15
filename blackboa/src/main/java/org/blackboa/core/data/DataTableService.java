@@ -43,18 +43,21 @@ public class DataTableService {
 	 * @date: 2019年3月13日 下午12:54:15
 	 */
 	public DataTableInfo getDataTableInfo(String table) throws Exception {
-		if (StringUtils.isEmpty(table)) {
-			throw new ParamException("表名为空!");
+		try {
+			if (StringUtils.isEmpty(table)) {
+				throw new ParamException("表名为空!");
+			}
+			DataTableInfo dataTableInfo = new DataTableInfo();
+			dataTableInfo.setTableName(table);
+			this.printTableName(dataTableInfo);
+			this.printColumns(dataTableInfo);
+			this.printPrimaryKey(dataTableInfo);
+			this.printForeignKey(dataTableInfo);
+			this.printIndex(dataTableInfo);
+			return dataTableInfo;
+		} finally {
+			this.conn.close();
 		}
-		DataTableInfo dataTableInfo = new DataTableInfo();
-		dataTableInfo.setTableName(table);
-		this.printTableName(dataTableInfo);
-		this.printColumns(dataTableInfo);
-		this.printPrimaryKey(dataTableInfo);
-		this.printForeignKey(dataTableInfo);
-		this.printIndex(dataTableInfo);
-		this.conn.close();
-		return dataTableInfo;
 	}
 
 	/**

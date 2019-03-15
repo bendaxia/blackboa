@@ -2,7 +2,7 @@ package org.blackboa.controller;
 
 import org.blackboa.common.Response;
 import org.blackboa.core.bean.DataTableInfo;
-import org.blackboa.core.data.Data;
+import org.blackboa.core.data.DataTableService;
 import org.blackboa.core.generate.GenerateHtml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/blackboa/data")
 public class DataController {
 	@Autowired
-	private Data data;
+	private DataTableService dataTableService;
 	@Autowired
 	private GenerateHtml generateHtml;
 
@@ -26,7 +26,7 @@ public class DataController {
 			@RequestParam(value = "fileName", required = true) String fileName,
 			@RequestParam(value = "author", required = true) String author){
 		try {
-			DataTableInfo dataTableInfo = data.getDataTableInfo(table);
+			DataTableInfo dataTableInfo = dataTableService.getDataTableInfo(table);
 			generateHtml.MakeTableHtml(fileName, title,tableImplication,author, dataTableInfo);
 		} catch (Exception e) {
 			e.printStackTrace();

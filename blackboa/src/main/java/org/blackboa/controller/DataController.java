@@ -2,6 +2,7 @@ package org.blackboa.controller;
 
 import org.blackboa.common.Response;
 import org.blackboa.core.bean.table.DataTableInfo;
+import org.blackboa.core.bean.view.DataViewInfo;
 import org.blackboa.core.data.DataTableService;
 import org.blackboa.core.data.DataViewService;
 import org.blackboa.core.generate.GenerateHtml;
@@ -22,7 +23,7 @@ public class DataController {
 	private GenerateHtml generateHtml;
 
 	@RequestMapping(value = "/table", method = RequestMethod.POST, produces = "application/json")
-	public String searchSingleRiskEntry(
+	public String table(
 			@RequestParam(value = "table", required = true) String table,
 			@RequestParam(value = "title", required = true) String title,
 			@RequestParam(value = "tableImplication", required = false) String tableImplication,
@@ -38,10 +39,15 @@ public class DataController {
 		return Response.ok();
 	}
 	
-	@RequestMapping(value = "/test", method = RequestMethod.POST, produces = "application/json")
-	public String searchSingleRiskEntry(){
+	@RequestMapping(value = "/view", method = RequestMethod.POST, produces = "application/json")
+	public String view(@RequestParam(value = "view", required = true) String view,
+			@RequestParam(value = "title", required = true) String title,
+			@RequestParam(value = "viewImplication", required = false) String viewImplication,
+			@RequestParam(value = "fileName", required = true) String fileName,
+			@RequestParam(value = "author", required = true) String author){
 		try {
-			dataViewService.getDataViewInfo("1");
+			DataViewInfo dataViewInfo = dataViewService.getDataViewInfo(view);
+			generateHtml.MakeViewHtml(fileName, title,viewImplication,author, dataViewInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());

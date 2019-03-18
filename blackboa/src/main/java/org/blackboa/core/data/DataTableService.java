@@ -104,6 +104,7 @@ public class DataTableService {
 			String tableName = resultSet.getString("TABLE_NAME");
 			if (tableName.equals(dataTableInfo.getTableName())) {
 				dataTableInfo.setTableName(tableName);
+				dataTableInfo.setTableImplication(resultSet.getString("Remarks"));
 			}
 		}
 	}

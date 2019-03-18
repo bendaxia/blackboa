@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<style type="text/css">
+body,table{
+        font-size:13px;
+}
+table{
+        table-layout:fixed;
+        empty-cells:show; 
+        border-collapse: collapse;
+        margin:0 auto;
+  border:1px solid #cad9ea;
+}
+th{
+  height:22px;
+  font-size:13px;
+  font-weight:bold;
+  background-color:#CCCCCC;
+  text-align:center;
+}
+td{
+  height:22px;
+}
+.ziduan_td{
+  height:22px;
+   font-size:13px;
+  font-weight:bold;
+  text-align:center;
+}
+.zhu_td{
+  height:22px;
+   font-size:13px;
+  font-weight:bold;
+}
+.tableTitle{font-size:14px; font-weight:bold;}
+</style>
+<title>###title###</title>
+</head>
+<body>
+<div style="margin:0 auto;width:880px; border:1px #006600 solid; font-size:12px; line-height:20px;">
+  <div style="width:100%;height:30px; font-size:16px; font-weight:bold; text-align:center;">
+    ###viewExplain###
+  </div>
+  <div style="margin:0 auto; width:100%; padding-top:10px;">
+    <b class="tableTitle">图名：###viewName### </b> <br />
+    <b class="tableTitle">说明：###introduce###  </b> <br />
+    <b class="tableTitle">主键：###viewPrimaryKey###</b> <br />
+    <b class="tableTitle">索引：(###viewIndex###)</b> <br />
+    <b class="tableTitle">作者：###author###</b> <br />
+    <b class="tableTitle">最后修改日期：###dateTime### </b> <br/>
+    <br/>
+  </div>  
+  <table width="100%" border="1">
+    <thead>
+      <th width="70">序号</td>
+      <th width="170">字段名</td>
+      <th width="170">含义</td>
+      <th width="140">字段类型</td>
+      <th width="80">允许为空</td>
+      <th width="70">默认值</td>
+      <th>备注</td>
+    </thead>
+    ###tr### 
+  </table>
+  <br/>
+  <table width="100%" border="1">
+    <thead>
+      <th>备注说明</td>
+    </thead>    
+    <tr>
+      <td class="zhu_td">
+        【注1】 
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

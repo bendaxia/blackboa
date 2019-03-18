@@ -56,7 +56,7 @@ public class DataTableService {
 			this.printIndex(dataTableInfo);
 			return dataTableInfo;
 		} finally {
-			this.conn.close();
+//			this.conn.close();  工具自始至终只有一个连接，无需关闭.
 		}
 	}
 

@@ -41,7 +41,7 @@ public class DataViewService {
 			this.printForeignKey(dataViewInfo);
 			return dataViewInfo;
 		}finally {
-			this.conn.close();
+//			this.conn.close(); 	工具自始至终只有一个连接，无需关闭.
 		}
 	}
 	

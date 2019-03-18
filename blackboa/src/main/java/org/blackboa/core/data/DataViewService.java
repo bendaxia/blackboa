@@ -39,7 +39,6 @@ public class DataViewService {
 			this.printColumns(dataViewInfo);
 			this.printPrimaryKey(dataViewInfo);
 			this.printForeignKey(dataViewInfo);
-			this.printIndex(dataViewInfo);
 			return dataViewInfo;
 		}finally {
 			this.conn.close();
@@ -137,30 +136,4 @@ public class DataViewService {
 		dataViewInfo.setViewForeignKey(str.toString());
 	}
 	
-	/**
-	 * 索引
-	* @Function: DataViewService.java
-	* @Description: 该函数的功能描述
-	*
-	* @param:描述1描述
-	* @return：返回结果描述
-	* @throws：异常描述
-	*
-	* @author: ben
-	* @date: 2019年3月18日 上午10:34:47
-	 */
-	private void printIndex(DataViewInfo dataViewInfo) throws Exception {
-		ResultSet indexResultSet = this.dbmd.getIndexInfo(null,null,dataViewInfo.getViewName().toUpperCase(),false,false);
-		StringBuilder str = new StringBuilder();
-		HashSet<String> strs = new HashSet<>();
-		while (indexResultSet.next()) {
-			if(!StringUtils.isEmpty(indexResultSet.getString("COLUMN_NAME"))) {
-				strs.add(indexResultSet.getString("COLUMN_NAME")+",");
-			}
-		}
-		for(String s : strs) {
-			str.append(s);
-		}
-		dataViewInfo.setViewIndex(str.toString());
-	}
 }

@@ -212,7 +212,27 @@ public class DataTableService {
 		HashSet<String> strs = new HashSet<>();
 		while (indexResultSet.next()) {
 			if(!StringUtils.isEmpty(indexResultSet.getString("COLUMN_NAME"))) {
-				strs.add(indexResultSet.getString("COLUMN_NAME")+",");
+				int index = indexResultSet.getInt("TYPE");
+				String indexstr = "";
+				switch(index){
+					case 0:{
+						indexstr="没有索引";
+						break;
+					}
+					case 1:{
+						indexstr="聚集索引";
+						break;
+					}
+					case 2:{
+						indexstr="哈希表索引";
+						break;
+					}
+					case 3:{
+						indexstr="其它索引";
+						break;
+					}
+				}
+				strs.add(indexResultSet.getString("COLUMN_NAME")+":"+indexstr+",");
 			}
 		}
 		for(String s : strs) {

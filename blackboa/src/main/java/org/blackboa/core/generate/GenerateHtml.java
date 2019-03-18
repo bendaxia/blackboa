@@ -70,7 +70,6 @@ public class GenerateHtml {
 		templateContent = templateContent.replaceAll("###viewName###", dataViewInfo.getViewName());
 		templateContent = templateContent.replaceAll("###introduce###", viewImplication);
 		templateContent = templateContent.replaceAll("###viewPrimaryKey###", dataViewInfo.getViewPrimaryKey());
-		templateContent = templateContent.replaceAll("###viewIndex###", dataViewInfo.getViewIndex());
 		templateContent = templateContent.replaceAll("###author###", author);
 		templateContent = templateContent.replaceAll("###dateTime###", TimeUtils.getCurrentDay("yyyy-MM-dd hh:mm"));
 		StringBuilder tr = new StringBuilder();

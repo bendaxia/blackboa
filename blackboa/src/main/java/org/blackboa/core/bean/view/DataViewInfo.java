@@ -21,11 +21,6 @@ public class DataViewInfo {
 	private List<DataViewColumn> dataViewColumns = new ArrayList<>();
 
 	/**
-	 * 索引
-	 */
-	private String viewIndex;
-
-	/**
 	 * 主键
 	 */
 	private String viewPrimaryKey;
@@ -39,14 +34,6 @@ public class DataViewInfo {
 	 * 外键所属表
 	 */
 	private String foreignKeyViewName;
-
-	public String getViewIndex() {
-		return viewIndex;
-	}
-
-	public void setViewIndex(String viewIndex) {
-		this.viewIndex = viewIndex;
-	}
 
 	public String getViewPrimaryKey() {
 		return viewPrimaryKey;

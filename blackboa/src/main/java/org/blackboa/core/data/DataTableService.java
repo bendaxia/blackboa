@@ -131,7 +131,7 @@ public class DataTableService {
 			dataTableColumn.setColumnType(rs.getString("TYPE_NAME"));
 			dataTableColumn.setColumnLength(StringUtils.isEmpty((Integer.valueOf(rs.getString("COLUMN_SIZE")) > 0 ?(StringUtils.isEmpty(rs.getString("DECIMAL_DIGITS"))||(Integer.valueOf(rs.getString("DECIMAL_DIGITS"))==0?true:false)?rs.getString("COLUMN_SIZE"):(rs.getString("COLUMN_SIZE")+","+rs.getString("DECIMAL_DIGITS"))):""))?"":"("+(Integer.valueOf(rs.getString("COLUMN_SIZE")) > 0 ?(StringUtils.isEmpty(rs.getString("DECIMAL_DIGITS"))||(Integer.valueOf(rs.getString("DECIMAL_DIGITS"))==0?true:false)?rs.getString("COLUMN_SIZE"):(rs.getString("COLUMN_SIZE")+","+rs.getString("DECIMAL_DIGITS"))):"")+")");
 			dataTableColumn.setColumnDefault(rs.getString("COLUMN_DEF"));
-			dataTableColumn.setColumnIsNull(Integer.valueOf(rs.getString("NULLABLE"))==1?"Y":"N");
+			dataTableColumn.setColumnIsNull(rs.getString("NULLABLE"));
 			dataTableInfo.getDataTableColumns().add(dataTableColumn);
 		}
 	}

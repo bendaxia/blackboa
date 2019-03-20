@@ -43,14 +43,14 @@ public class SwaggerConfig  extends WebMvcConfigurerAdapter{
 	
 	@Bean
 	public SecurityScheme apiKey(){
-		return new ApiKey("risk", "risk", "risk");
+		return new ApiKey("blackboa", "blackboa", "blackboa");
 	}
 	
 	private ApiInfo apiInfo(){
 		return new ApiInfoBuilder()
-				.title("Risk")
-				.description("风控")
-				.version("1.0.0")
+				.title("BlackBoa")
+				.description("表信息生成工具")
+				.version("1.1.0")
 				.termsOfServiceUrl("no terms of service")
 				.contact(new Contact("", "", ""))
 				.license("The Apache License,Version 2.0")

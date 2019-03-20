@@ -36,4 +36,4 @@
 
 #### 下载
 - [v1.0.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.0.0)
-- [v1.1.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.0.0) 
+- [v1.1.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.1.0) 

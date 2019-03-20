@@ -24,5 +24,16 @@
 	5. author 作者 必填
 
 #### 日志
-##20190314 
-1. 1.0.0版本发布
+
+# 20190314 #
+- 1.0.0版本发布
+- 表信息生成
+
+# 20190320 #
+- 1.1.0版本发布
+- 新增视图信息生成
+- 新增存储过程信息生成
+
+#### 下载
+- [v1.0.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.0.0)
+- [v1.1.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.1.0) 

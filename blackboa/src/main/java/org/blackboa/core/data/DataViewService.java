@@ -34,7 +34,7 @@ public class DataViewService {
 				throw new ParamException("视图名为空!");
 			}
 			DataViewInfo dataViewInfo = new DataViewInfo();
-			dataViewInfo.setViewName(view);
+			dataViewInfo.setViewName(view.toUpperCase());
 			this.printViewName(dataViewInfo);
 			this.printColumns(dataViewInfo);
 			this.printPrimaryKey(dataViewInfo);

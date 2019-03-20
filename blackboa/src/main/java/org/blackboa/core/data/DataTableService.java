@@ -48,7 +48,7 @@ public class DataTableService {
 				throw new ParamException("表名为空!");
 			}
 			DataTableInfo dataTableInfo = new DataTableInfo();
-			dataTableInfo.setTableName(table);
+			dataTableInfo.setTableName(table.toUpperCase());
 			this.printTableName(dataTableInfo);
 			this.printColumns(dataTableInfo);
 			this.printPrimaryKey(dataTableInfo);

@@ -76,7 +76,32 @@ public class DataProcedureInfo {
 	}
 
 	public void setProcedureType(String procedureType) {
-		this.procedureType = procedureType;
+		switch (Integer.valueOf(procedureType)) {
+		case PROCEDURETYPE_STATE.UNKNOWN_PROCEDURETYPE:
+			this.procedureType = PROCEDURETYPE_VALUE.UNKNOWN_PROCEDURETYPE;
+			break;
+		case PROCEDURETYPE_STATE.PROCEDURE:
+			this.procedureType = PROCEDURETYPE_VALUE.PROCEDURE;
+			break;
+		case PROCEDURETYPE_STATE.FUNCTION:
+			this.procedureType = PROCEDURETYPE_VALUE.FUNCTION;
+			break;
+		default:
+			this.procedureType = procedureType;
+			break;
+		}
 	}
 
+	private static final class PROCEDURETYPE_STATE{
+		private static final int UNKNOWN_PROCEDURETYPE = 0; 
+		private static final int PROCEDURE = 1; 
+		private static final int FUNCTION  = 2; 
+	}
+	
+	private static final class PROCEDURETYPE_VALUE{
+		private static final String UNKNOWN_PROCEDURETYPE = "可能返回结果"; 
+		private static final String PROCEDURE = "不返回结果"; 
+		private static final String FUNCTION  = "返回结果"; 
+	}
+	
 }

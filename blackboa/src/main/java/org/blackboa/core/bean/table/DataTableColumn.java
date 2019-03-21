@@ -98,4 +98,18 @@ public class DataTableColumn {
 		private static final String NULL_ABLE = "Y"; // 不可以为null
 		private static final String UNKNOWN = "UNKNOWN"; // 不知道可不可以为null
 	}
+	
+	public static final class COLUMNINDEX_STATE {
+		public static final int UNKNOWN_INDEX = 0; 
+		public static final int JJ_INDEX = 1; 
+		public static final int HASH_INDEX = 2; 
+		public static final int QT_INDEX = 3; 
+	}
+	
+	public static final class COLUMNINDEX_VALUE {
+		public static final String UNKNOWN_INDEX = "没有索引"; 
+		public static final String JJ_INDEX = "聚集索引"; 
+		public static final String HASH_INDEX = "哈希索引"; 
+		public static final String QT_INDEX = "其他索引"; 
+	}
 }

@@ -47,21 +47,7 @@ public class DataProcedureService {
 				dataProcedureInfo.setProcedureCat(StringUtils.isEmpty(rs.getString("PROCEDURE_CAT"))?"":rs.getString("PROCEDURE_CAT"));
 				dataProcedureInfo.setProcedureImplication(rs.getString("REMARKS"));
 				dataProcedureInfo.setProcedureSchem(rs.getString("PROCEDURE_SCHEM"));
-				String type = "";
-				switch (Integer.valueOf(rs.getString("PROCEDURE_TYPE"))) {
-				case 1:
-					type = "可能返回结果";
-					break;
-				case 2:
-					type = "不返回结果";
-					break;
-				case 3:
-					type = "返回结果";
-					break;
-				default:
-					break;
-				}
-				dataProcedureInfo.setProcedureType(type);
+				dataProcedureInfo.setProcedureType(rs.getString("PROCEDURE_TYPE"));
 			}
 		}
 	}
@@ -72,27 +58,7 @@ public class DataProcedureService {
 		while (rss.next()) {
 			DataProcedureColumn dataProcedureColumn = new DataProcedureColumn();
 			dataProcedureColumn.setColumnName(rss.getString("COLUMN_NAME"));
-			String type = "";
-			switch (Integer.valueOf(rss.getString("COLUMN_TYPE"))) {
-			case 1:
-				type = "没人知道";
-				break;
-			case 2:
-				type = "IN参数";
-				break;
-			case 3:
-				type = "INOUT参数";
-				break;
-			case 4:
-				type = "OUT参数";
-				break;
-			case 5:
-				type = "过程返回值";
-				break;
-			default:
-				break;
-			}
-			dataProcedureColumn.setColumnTypeName(type);
+			dataProcedureColumn.setColumnTypeName(rss.getString("COLUMN_TYPE"));
 			dataProcedureColumn.setColumnType(rss.getString("TYPE_NAME"));
 			dataProcedureColumn.setColumnLength(StringUtils.isEmpty(rss.getString("LENGTH"))?"":"("+rss.getString("LENGTH")+")");
 			dataProcedureColumn.setColumnImplication(rss.getString("REMARKS"));

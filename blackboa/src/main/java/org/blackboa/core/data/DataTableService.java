@@ -212,32 +212,47 @@ public class DataTableService {
 		HashSet<String> strs = new HashSet<>();
 		while (indexResultSet.next()) {
 			if(!StringUtils.isEmpty(indexResultSet.getString("COLUMN_NAME"))) {
-				int index = indexResultSet.getInt("TYPE");
-				String indexstr = "";
-				switch(index){
-					case 0:{
-						indexstr="没有索引";
-						break;
-					}
-					case 1:{
-						indexstr="聚集索引";
-						break;
-					}
-					case 2:{
-						indexstr="哈希表索引";
-						break;
-					}
-					case 3:{
-						indexstr="其它索引";
-						break;
-					}
-				}
-				strs.add(indexResultSet.getString("COLUMN_NAME")+":"+indexstr+",");
+				strs.add(indexResultSet.getString("COLUMN_NAME")+":"+this.getIndexType(indexResultSet.getInt("TYPE"))+",");
 			}
 		}
 		for(String s : strs) {
 			str.append(s);
 		}
 		dataTableInfo.setTableIndex(str.toString());
+	}
+	
+	/**
+	 * 获取索引类型
+	* @Function: DataTableService.java
+	* @Description: 该函数的功能描述
+	*
+	* @param:描述1描述
+	* @return：返回结果描述
+	* @throws：异常描述
+	*
+	* @author: ben
+	* @date: 2019年3月21日 上午10:06:19
+	 */
+	private String getIndexType(int indexType) {
+		String indexstr = "";
+		switch(indexType){
+			case DataTableColumn.COLUMNINDEX_STATE.UNKNOWN_INDEX:{
+				indexstr=DataTableColumn.COLUMNINDEX_VALUE.UNKNOWN_INDEX;
+				break;
+			}
+			case DataTableColumn.COLUMNINDEX_STATE.JJ_INDEX:{
+				indexstr=DataTableColumn.COLUMNINDEX_VALUE.JJ_INDEX;
+				break;
+			}
+			case DataTableColumn.COLUMNINDEX_STATE.HASH_INDEX:{
+				indexstr=DataTableColumn.COLUMNINDEX_VALUE.HASH_INDEX;
+				break;
+			}
+			case DataTableColumn.COLUMNINDEX_STATE.QT_INDEX:{
+				indexstr=DataTableColumn.COLUMNINDEX_VALUE.QT_INDEX;
+				break;
+			}
+		}
+		return indexstr;
 	}
 }

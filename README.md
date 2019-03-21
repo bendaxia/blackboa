@@ -1,7 +1,7 @@
 # blackboa
 
 #### 介绍
-	blackboa是一款数据库表信息生成工具，根据表信息生成html文件
+	blackboa是一款数据库元数据信息生成工具，根据信息生成html文件
 
 #### 软件架构
 	SpringBoot1.5.4

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 
 import org.apache.commons.lang3.StringUtils;
+import org.blackboa.core.bean.function.DataFunctionInfo;
 import org.blackboa.core.bean.procedure.DataProcedureInfo;
 import org.blackboa.core.bean.table.DataTableInfo;
 import org.blackboa.core.bean.view.DataViewInfo;
@@ -119,6 +120,44 @@ public class GenerateHtml {
 			tr.append("<td class=\"ziduan_td\"><b>"+dataProcedureInfo.getDataProcedureColumn().get(i).getColumnImplication()+"</b></td>\n");
 			tr.append("<td class=\"ziduan_td\"><b>"+dataProcedureInfo.getDataProcedureColumn().get(i).getColumnType()+dataProcedureInfo.getDataProcedureColumn().get(i).getColumnLength()+"</b></td>\n");
 			tr.append("<td class=\"ziduan_td\"><b>"+dataProcedureInfo.getDataProcedureColumn().get(i).getColumnIsNull()+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b></b></td>\n");
+			tr.append("<tr>\n");
+		}
+		templateContent = templateContent.replaceAll("###tr###", tr.toString());
+		String fileame = fileName + ".html";
+		fileame = path + "/" + fileame;// 生成的html文件保存路径。
+		OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(fileame), "UTF-8");
+		oStreamWriter.append(templateContent);
+		oStreamWriter.close();
+	}
+	
+	
+	public void MakeFunctionHtml(String fileName,String title,String functionImplication,String author,DataFunctionInfo dataFunctionInfo) throws Exception {
+		String templateContent = "";
+		InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlTemplatePathEnum.FUNCTIOPN.toString());
+		int lenght = fileinputstream.available();
+		byte bytes[] = new byte[lenght];
+		fileinputstream.read(bytes);
+		fileinputstream.close();
+		templateContent = new String(bytes,"UTF-8");
+		templateContent = templateContent.replaceAll("###title###", title);
+		templateContent = templateContent.replaceAll("###functionName###", dataFunctionInfo.getFunctionName());
+		templateContent = templateContent.replaceAll("###functionExplain###", title);
+		templateContent = templateContent.replaceAll("###functionCat###", dataFunctionInfo.getFunctionCat());
+		templateContent = templateContent.replaceAll("###functionSchem###", dataFunctionInfo.getFunctionSchem());
+		templateContent = templateContent.replaceAll("###functionType###", dataFunctionInfo.getFunctionType());
+		templateContent = templateContent.replaceAll("###introduce###", !StringUtils.isEmpty(functionImplication)?functionImplication:dataFunctionInfo.getFunctionImplication());
+		templateContent = templateContent.replaceAll("###author###", author);
+		templateContent = templateContent.replaceAll("###dateTime###", TimeUtils.getCurrentDay("yyyy-MM-dd hh:mm"));
+		StringBuilder tr = new StringBuilder();
+		for(int i = 0; i<dataFunctionInfo.getDataFunctionColumn().size();i++) {
+			tr.append("<tr>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+(i+1)+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnName()+"("+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnTypeName()+")"+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnImplication()+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnType()+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnLength()+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnIsNull()+"</b></td>\n");
+			tr.append("<td class=\"ziduan_td\"><b>"+dataFunctionInfo.getDataFunctionColumn().get(i).getColumnDef()+"</b></td>\n");
 			tr.append("<td class=\"ziduan_td\"><b></b></td>\n");
 			tr.append("<tr>\n");
 		}

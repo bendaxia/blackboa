@@ -62,7 +62,7 @@ public class DataProcedureService {
 			dataProcedureColumn.setColumnType(rss.getString("TYPE_NAME"));
 			dataProcedureColumn.setColumnLength(StringUtils.isEmpty(rss.getString("LENGTH"))?"":"("+rss.getString("LENGTH")+")");
 			dataProcedureColumn.setColumnImplication(rss.getString("REMARKS"));
-			dataProcedureColumn.setColumnIsNull(Integer.valueOf(rss.getString("NULLABLE")) == 1 ? "Y" : "N");
+			dataProcedureColumn.setColumnIsNull(rss.getString("NULLABLE"));
 			dataProcedureInfo.getDataProcedureColumn().add(dataProcedureColumn);
 		}
 	}

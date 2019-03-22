@@ -75,7 +75,7 @@ public class DataViewService {
 			dataViewColumn.setColumnType(rs.getString("TYPE_NAME"));
 			dataViewColumn.setColumnLength(StringUtils.isEmpty((Integer.valueOf(rs.getString("COLUMN_SIZE")) > 0 ?(StringUtils.isEmpty(rs.getString("DECIMAL_DIGITS"))||(Integer.valueOf(rs.getString("DECIMAL_DIGITS"))==0?true:false)?rs.getString("COLUMN_SIZE"):(rs.getString("COLUMN_SIZE")+","+rs.getString("DECIMAL_DIGITS"))):""))?"":"("+(Integer.valueOf(rs.getString("COLUMN_SIZE")) > 0 ?(StringUtils.isEmpty(rs.getString("DECIMAL_DIGITS"))||(Integer.valueOf(rs.getString("DECIMAL_DIGITS"))==0?true:false)?rs.getString("COLUMN_SIZE"):(rs.getString("COLUMN_SIZE")+","+rs.getString("DECIMAL_DIGITS"))):"")+")");
 			dataViewColumn.setColumnDefault(rs.getString("COLUMN_DEF"));
-			dataViewColumn.setColumnIsNull(Integer.valueOf(rs.getString("NULLABLE"))==1?"Y":"N");
+			dataViewColumn.setColumnIsNull(rs.getString("NULLABLE"));
 			dataViewInfo.getDataViewColumns().add(dataViewColumn);
 		}
 	}

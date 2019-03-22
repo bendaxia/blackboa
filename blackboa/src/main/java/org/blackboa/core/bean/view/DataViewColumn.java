@@ -55,7 +55,20 @@ public class DataViewColumn {
 	}
 
 	public void setColumnIsNull(String columnIsNull) {
-		this.columnIsNull = columnIsNull;
+		switch (Integer.valueOf(columnIsNull)) {
+		case COLUMNISNULL_STATE.NO_NULLS:
+			this.columnIsNull = COLUMNISNULL_VALUE.NO_NULLS;
+			break;
+		case COLUMNISNULL_STATE.NULL_ABLE:
+			this.columnIsNull = COLUMNISNULL_VALUE.NULL_ABLE;
+			break;
+		case COLUMNISNULL_STATE.UNKNOWN:
+			this.columnIsNull = COLUMNISNULL_VALUE.UNKNOWN;
+			break;
+		default:
+			this.columnIsNull = columnIsNull;
+			break;
+		}
 	}
 
 	public String getColumnImplication() {
@@ -73,5 +86,16 @@ public class DataViewColumn {
 	public void setColumnDefault(String columnDefault) {
 		this.columnDefault = columnDefault;
 	}
+	
+	private static final class COLUMNISNULL_STATE {
+		private static final int NO_NULLS = 0; // 可以为null
+		private static final int NULL_ABLE = 1; // 不可以为null
+		private static final int UNKNOWN = 2; // 不知道可不可以为null
+	}
 
+	private static final class COLUMNISNULL_VALUE {
+		private static final String NO_NULLS = "N"; // 可以为null
+		private static final String NULL_ABLE = "Y"; // 不可以为null
+		private static final String UNKNOWN = "UNKNOWN"; // 不知道可不可以为null
+	}
 }

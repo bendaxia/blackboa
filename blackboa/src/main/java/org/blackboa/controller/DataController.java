@@ -1,9 +1,11 @@
 package org.blackboa.controller;
 
 import org.blackboa.common.Response;
+import org.blackboa.core.bean.function.DataFunctionInfo;
 import org.blackboa.core.bean.procedure.DataProcedureInfo;
 import org.blackboa.core.bean.table.DataTableInfo;
 import org.blackboa.core.bean.view.DataViewInfo;
+import org.blackboa.core.data.DataFunctionService;
 import org.blackboa.core.data.DataProcedureService;
 import org.blackboa.core.data.DataTableService;
 import org.blackboa.core.data.DataViewService;
@@ -23,6 +25,8 @@ public class DataController {
 	private DataViewService dataViewService;
 	@Autowired
 	private DataProcedureService dataProcedureService;
+	@Autowired
+	private DataFunctionService dataFunctionService;
 	@Autowired
 	private GenerateHtml generateHtml;
 
@@ -67,6 +71,22 @@ public class DataController {
 		try {
 			DataProcedureInfo dataProcedureInfo = dataProcedureService.getDataProcedureInfo(procedure);
 			generateHtml.MakeProcedureHtml(fileName, title, procedureImplication, author, dataProcedureInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.errorInternal(e.getMessage());
+		}
+		return Response.ok();
+	}
+	
+	@RequestMapping(value = "/function", method = RequestMethod.POST, produces = "application/json")
+	public String function(@RequestParam(value = "function", required = true) String function,
+			@RequestParam(value = "title", required = true) String title,
+			@RequestParam(value = "functionImplication", required = false) String functionImplication,
+			@RequestParam(value = "fileName", required = true) String fileName,
+			@RequestParam(value = "author", required = true) String author) {
+		try {
+			DataFunctionInfo dataFunctionInfo = this.dataFunctionService.getDataFunctionInfo(function);
+			generateHtml.MakeFunctionHtml(fileName, title, functionImplication, author, dataFunctionInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());

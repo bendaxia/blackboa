@@ -34,6 +34,13 @@
 - 新增视图信息生成
 - 新增存储过程信息生成
 
+# 20190322 #
+- 1.2.0版本发布
+- 加入mysql、oralce、sqlserver支持
+- 新增function明细
+- 代码优化
+
 #### 下载
 - [v1.0.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.0.0)
 - [v1.1.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.1.0) 
+- [v1.2.0](https://gitee.com/bendaxia/blackboa/releases/blackboa-v1.2.0) 

@@ -16,10 +16,10 @@
 #### 使用说明
 
 1. 配置好数据库信息后启动访问[http://localhost/swagger-ui.html](http://localhost/swagger-ui.html)
-2. 接口/blackboa/data/table共有五个参数
-	1. table 表名 必填
+2. 接口/blackboa/data/{接口名}共有五个参数
+	1. {对象名参数} 对象名 必填
 	2. title 标题 必填
-	3. tableImplication 表说明 选填
+	3. {对象名参数}+Implication 表说明 选填
 	4. fileName 输出文件名 必填
 	5. author 作者 必填
 

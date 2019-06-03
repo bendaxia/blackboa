@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GenerateWord {
-	//路径
+	//路径 test
 	@Value("${generate.path}")
 	private String path;
 	

@@ -33,7 +33,7 @@ public class GenerateHtml {
 			templateContent = templateContent.replaceAll("###title###", title);
 			templateContent = templateContent.replaceAll("###tableExplain###", title);
 			templateContent = templateContent.replaceAll("###tableName###", dataTableInfo.getTableName());
-			templateContent = templateContent.replaceAll("###introduce###", !StringUtils.isEmpty(tableImplication)?tableImplication:dataTableInfo.getTableImplication());
+			templateContent = templateContent.replaceAll("###introduce###", !StringUtils.isEmpty(tableImplication)?(!StringUtils.isEmpty(dataTableInfo.getTableImplication())?"":dataTableInfo.getTableImplication()):tableImplication);
 			templateContent = templateContent.replaceAll("###tablePrimaryKey###", dataTableInfo.getTablePrimaryKey());
 			templateContent = templateContent.replaceAll("###tableIndex###", dataTableInfo.getTableIndex());
 			templateContent = templateContent.replaceAll("###author###", author);

@@ -38,7 +38,7 @@ public class DataController {
 			@RequestParam(value = "author", required = true) String author) {
 		try {
 			DataTableInfo dataTableInfo = dataTableService.getDataTableInfo(table);
-			generateHtml.MakeTableHtml(fileName, title, tableImplication, author, dataTableInfo);
+			generateHtml.makeTableHtml(fileName, title, tableImplication, author, dataTableInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());
@@ -54,7 +54,7 @@ public class DataController {
 			@RequestParam(value = "author", required = true) String author) {
 		try {
 			DataViewInfo dataViewInfo = dataViewService.getDataViewInfo(view);
-			generateHtml.MakeViewHtml(fileName, title, viewImplication, author, dataViewInfo);
+			generateHtml.makeViewHtml(fileName, title, viewImplication, author, dataViewInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());
@@ -70,7 +70,7 @@ public class DataController {
 			@RequestParam(value = "author", required = true) String author) {
 		try {
 			DataProcedureInfo dataProcedureInfo = dataProcedureService.getDataProcedureInfo(procedure);
-			generateHtml.MakeProcedureHtml(fileName, title, procedureImplication, author, dataProcedureInfo);
+			generateHtml.makeProcedureHtml(fileName, title, procedureImplication, author, dataProcedureInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());
@@ -86,7 +86,7 @@ public class DataController {
 			@RequestParam(value = "author", required = true) String author) {
 		try {
 			DataFunctionInfo dataFunctionInfo = this.dataFunctionService.getDataFunctionInfo(function);
-			generateHtml.MakeFunctionHtml(fileName, title, functionImplication, author, dataFunctionInfo);
+			generateHtml.makeFunctionHtml(fileName, title, functionImplication, author, dataFunctionInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.errorInternal(e.getMessage());

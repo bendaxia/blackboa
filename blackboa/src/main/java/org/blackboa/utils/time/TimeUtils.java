@@ -86,7 +86,7 @@ public class TimeUtils {
 	/**
 	 * 得到当天周几
 	 * 
-	 * @param dt
+	 * @param dateStr,formatStr
 	 * @return
 	 */
 	public static String getWeekOfDate(String dateStr, String formatStr) {
@@ -97,8 +97,9 @@ public class TimeUtils {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(date);
 			int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-			if (w < 0)
+			if (w < 0) {
 				w = 0;
+			}
 			return weekDays[w];
 		} catch (ParseException e) {
 
@@ -232,15 +233,15 @@ public class TimeUtils {
 		long time1 = cal.getTimeInMillis();
 		cal.setTime(bdate);
 		long time2 = cal.getTimeInMillis();
-		long between_days = (time2 - time1) / (1000 * 3600 * 24);
-		return Integer.parseInt(String.valueOf(between_days));
+		long betWeenDays = (time2 - time1) / (1000 * 3600 * 24);
+		return Integer.parseInt(String.valueOf(betWeenDays));
 	}
 
 	/**
 	 * <p>
 	 * 获取星座
 	 * 
-	 * @param date
+	 * @param time
 	 * @return
 	 * @jira TODO
 	 * @author 贲国龙
@@ -291,8 +292,9 @@ public class TimeUtils {
 
 		if (monthNow <= monthBirth) {
 			if (monthNow == monthBirth) {
-				if (dayOfMonthNow < dayOfMonthBirth)
+				if (dayOfMonthNow < dayOfMonthBirth) {
 					age--;
+				}
 			} else {
 				age--;
 			}
@@ -308,19 +310,25 @@ public class TimeUtils {
 	 */
 	public static String getFriendlytime(long time) {
 		Date d = TimeUtils.getStringToDate(TimeUtils.getDate(time, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss");
-		long delta = (new Date().getTime() - d.getTime()) / 1000;
-		if (delta / (60 * 60 * 24 * 365) > 0)
+		long delta = (getCurrentTime() - d.getTime()) / 1000;
+		if (delta / (60 * 60 * 24 * 365) > 0) {
 			return delta / (60 * 60 * 24 * 365) + "年前";
-		if (delta / (60 * 60 * 24 * 30) > 0)
+		}
+		if (delta / (60 * 60 * 24 * 30) > 0) {
 			return delta / (60 * 60 * 24 * 30) + "个月前";
-		if (delta / (60 * 60 * 24 * 7) > 0)
+		}
+		if (delta / (60 * 60 * 24 * 7) > 0) {
 			return delta / (60 * 60 * 24 * 7) + "周前";
-		if (delta / (60 * 60 * 24) > 0)
+		}
+		if (delta / (60 * 60 * 24) > 0) {
 			return delta / (60 * 60 * 24) + "天前";
-		if (delta / (60 * 60) > 0)
+		}
+		if (delta / (60 * 60) > 0) {
 			return delta / (60 * 60) + "小时前";
-		if (delta / (60) > 0)
+		}
+		if (delta / (60) > 0) {
 			return delta / (60) + "分钟前";
+		}
 		return "刚刚";
 	}
 }

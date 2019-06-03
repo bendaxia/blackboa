@@ -22,11 +22,11 @@ public class GenerateHtml {
 	private String path;
 	
 	
-	public void MakeTableHtml(String fileName,String title,String tableImplication,String author,DataTableInfo dataTableInfo) throws Exception {
+	public void makeTableHtml(String fileName,String title,String tableImplication,String author,DataTableInfo dataTableInfo) throws Exception {
 			String templateContent = "";
 			InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlTemplatePathEnum.TABLE.toString());
 			int lenght = fileinputstream.available();
-			byte bytes[] = new byte[lenght];
+			byte[] bytes = new byte[lenght];
 			fileinputstream.read(bytes);
 			fileinputstream.close();
 			templateContent = new String(bytes,"UTF-8");
@@ -59,11 +59,11 @@ public class GenerateHtml {
 	}
 	
 	
-	public void MakeViewHtml(String fileName,String title,String viewImplication,String author,DataViewInfo dataViewInfo) throws Exception {
+	public void makeViewHtml(String fileName,String title,String viewImplication,String author,DataViewInfo dataViewInfo) throws Exception {
 		String templateContent = "";
 		InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlTemplatePathEnum.VIEW.toString());
 		int lenght = fileinputstream.available();
-		byte bytes[] = new byte[lenght];
+		byte[] bytes = new byte[lenght];
 		fileinputstream.read(bytes);
 		fileinputstream.close();
 		templateContent = new String(bytes,"UTF-8");
@@ -95,11 +95,11 @@ public class GenerateHtml {
 	}
 	
 	
-	public void MakeProcedureHtml(String fileName,String title,String procedureImplication,String author,DataProcedureInfo dataProcedureInfo) throws Exception {
+	public void makeProcedureHtml(String fileName,String title,String procedureImplication,String author,DataProcedureInfo dataProcedureInfo) throws Exception {
 		String templateContent = "";
 		InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlTemplatePathEnum.PROCEDURE.toString());
 		int lenght = fileinputstream.available();
-		byte bytes[] = new byte[lenght];
+		byte[] bytes = new byte[lenght];
 		fileinputstream.read(bytes);
 		fileinputstream.close();
 		templateContent = new String(bytes,"UTF-8");
@@ -132,11 +132,11 @@ public class GenerateHtml {
 	}
 	
 	
-	public void MakeFunctionHtml(String fileName,String title,String functionImplication,String author,DataFunctionInfo dataFunctionInfo) throws Exception {
+	public void makeFunctionHtml(String fileName,String title,String functionImplication,String author,DataFunctionInfo dataFunctionInfo) throws Exception {
 		String templateContent = "";
 		InputStream fileinputstream = this.getClass().getResourceAsStream(HtmlTemplatePathEnum.FUNCTIOPN.toString());
 		int lenght = fileinputstream.available();
-		byte bytes[] = new byte[lenght];
+		byte[] bytes = new byte[lenght];
 		fileinputstream.read(bytes);
 		fileinputstream.close();
 		templateContent = new String(bytes,"UTF-8");

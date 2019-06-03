@@ -252,6 +252,9 @@ public class DataTableService {
 				indexstr=DataTableColumn.COLUMNINDEX_VALUE.QT_INDEX;
 				break;
 			}
+			default:{
+				break;
+			}
 		}
 		return indexstr;
 	}
